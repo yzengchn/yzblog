@@ -2,14 +2,14 @@
 
 该项目是一个典型的由springcloud管理的微服务项目，主要包括如下模块
 
-|     服务名      | 父级依赖 |         模块说明         |
-| :-------------: | :------: | :----------------------: |
-|   api_gateway   |    无    |        zuul版网关        |
-|  cloud-gatewat  |    无    | spring-cloud-gateway网关 |
-|  eureka_server  |    无    |         注册中心         |
-|  user_service   |    无    |       用户服务模块       |
-| comment_service |    无    |       评论服务模块       |
-| weather_service |    无    |       天气服务模块       |
+|     服务名      | 父级依赖 |   模块说明   |
+| :-------------: | :------: | :----------: |
+|  yzblog_parent  |    无    |    父工程    |
+|  yzblog_common  |  parent  |    通用包    |
+|   yzblog_base   |  parent  |   基础服务   |
+|  user_service   |  parent  | 用户服务模块 |
+| comment_service |  parent  | 评论服务模块 |
+| weather_service |  parent  | 天气服务模块 |
 
 1. 用户服务
    - [x] 登录注册
