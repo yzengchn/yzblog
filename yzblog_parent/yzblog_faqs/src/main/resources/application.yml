@@ -1,16 +1,16 @@
 
 server:
-  port: 9001
+  port: 9003
   
 spring:
   application:
-    name: yzblog-base
+    name: yzblog-FAQ
     
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: ENC(vZSAzPqDeMa6QyAfOnjsGw==)
     password: ENC(RCwKx2oAxjqnnKYPajABZCYTl0wff5JA)
-    url: ENC(o8iVuU3Jp+Gnmdkr7zaBHbgruYTFo4NWfcQOXFAOUqUVlRTMeNSY+UOnR5De+uVOYQ8X5GxA9/HC/h/7UAoCkcgdcznOH9KgIPaO8hCzye6mIMg9Cmy1rg==)
+    url: ENC(zavibjGu9wFyljdUboiQoLuDbafexmpdPd/Oj7dh3n/NojSJRReU0HD32FpL8YmsyYjwNMTK6UHjU3aUHb6LuQRVFP8OiQUnkY8oOacTWYJLxyOOFmTVIw==)
   jpa:
     hibernate:
       ddl-auto: update 

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,8 @@ import xyz.yzblog.base.service.LabelService;
 import xyz.yzblog.common.consts.StatusCode;
 import xyz.yzblog.common.enums.StatusCodeEnum;
 import xyz.yzblog.common.utils.ResultUtils;
-import xyz.yzblog.common.vo.ResultVO;
+import xyz.yzblog.common.vo.PageResult;
+import xyz.yzblog.common.vo.Result;
 
 @Api(description="标签服务")
 @RestController
@@ -39,14 +41,14 @@ public class LabelController {
 	
 	@ApiOperation(value="查询标签",notes="查询所有标签列表")
 	@GetMapping
-	public ResultVO findAll(){
+	public Result findAll(){
 		return ResultUtils.success(StatusCodeEnum.QUERY_OK, labelService.findAll());
 	}
 	
 	@ApiOperation(value="查询单个标签",notes="根据ID查询标签")
 	@ApiImplicitParam(paramType="path", name = "id", value = "标签ID", required = true, dataType = "String")
 	@GetMapping("/{id}")
-	public ResultVO findById(@PathVariable String id) {
+	public Result findById(@PathVariable String id) {
 		return ResultUtils.success(StatusCodeEnum.QUERY_OK, labelService.findById(id));
 	}
 	
@@ -57,9 +59,9 @@ public class LabelController {
 		@ApiImplicitParam(name="recommend",value="是否推荐(Y / N)",dataType="String")
 	})
 	@PostMapping
-	public ResultVO addLabel(@Valid LabelForm form, BindingResult bindingResult) {
+	public Result addLabel(@Valid LabelForm form, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
-			return new ResultVO(true, StatusCode.ERROR, bindingResult.getFieldError().getDefaultMessage());
+			return new Result(true, StatusCode.ERROR, bindingResult.getFieldError().getDefaultMessage());
 		}
 		Label label = new Label();
 		BeanUtils.copyProperties(form, label);
@@ -74,7 +76,7 @@ public class LabelController {
 		@ApiImplicitParam(paramType="body", name="from",value="标签实体",dataType="LabelForm"),
 	})
 	@PutMapping("/{id}")
-	public ResultVO update(@RequestBody LabelForm from, @PathVariable String id) {
+	public Result update(@RequestBody LabelForm from, @PathVariable String id) {
 		
 		Label label = new Label();
 		BeanUtils.copyProperties(from, label);
@@ -87,7 +89,7 @@ public class LabelController {
 	@ApiOperation(value="删除单个标签",notes="根据ID删除标签")
 	@ApiImplicitParam(paramType="path", name = "id", value = "标签ID", required = true, dataType = "String")
 	@DeleteMapping("/{id}")
-	public ResultVO delete(@PathVariable String id) {
+	public Result delete(@PathVariable String id) {
 		labelService.deleteById(id);
 		return ResultUtils.success(StatusCodeEnum.DELETE_OK);
 	}
@@ -95,7 +97,20 @@ public class LabelController {
 	@ApiOperation(value="根据条件查询标签",notes="根据标签名称(labelname)、状态(state)、是否推荐(recommend)多个条件查询标签")
 	@ApiImplicitParam(paramType="body", name="searchMap",value="标签实体",dataType="LabelForm")
 	@PostMapping("/search")
-	public ResultVO findSearch(@RequestBody Map<String, String> searchMap) {
+	public Result findSearch(@RequestBody Map<String, String> searchMap) {
 		return ResultUtils.success(StatusCodeEnum.QUERY_OK, labelService.findSearch(searchMap));
 	}
+	
+	@ApiOperation(value="根据条件分页查询标签",notes="根据标签名称(labelname)、状态(state)、是否推荐(recommend)多个条件分页查询标签")
+	@ApiImplicitParams({
+		@ApiImplicitParam(paramType="body", name="searchMap",value="标签实体",dataType="LabelForm"),
+		@ApiImplicitParam(paramType="path", name="page",value="当前页",dataType="int"),
+		@ApiImplicitParam(paramType="path", name="size",value="每页条数",dataType="int")
+	})
+	@PostMapping("/search/{page}/{size}")
+	public Result findSearch(@RequestBody Map<String,String> searchMap, @PathVariable int page, @PathVariable int size) {
+		Page<Label> list = labelService.findSearch(searchMap, page, size);
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, new PageResult<>(list.getTotalElements(), list.getContent()));
+	}
+	
 }

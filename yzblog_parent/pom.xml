@@ -57,5 +57,7 @@
 	<modules>
 		<module>yzblog_common</module>
 		<module>yzblog_base</module>
+		<module>yzblog_article</module>
+		<module>yzblog_faqs</module>
 	</modules>
 </project>

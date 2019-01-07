@@ -7,7 +7,7 @@ package xyz.yzblog.common.vo;
  * @Email yzengchn@163.com
  * @since  [产品/模块版本]
  */
-public class ResultVO {
+public class Result {
 	/**
 	 * 是否成功
 	 */
@@ -30,17 +30,17 @@ public class ResultVO {
 	
 	
 	
-	public ResultVO(boolean flag, Integer code, String msg) {
+	public Result(boolean flag, Integer code, String msg) {
 		super();
 		this.flag = flag;
 		this.code = code;
 		this.msg = msg;
 	}
 
-	public ResultVO() {
+	public Result() {
 	}
 
-	public ResultVO(boolean flag, Integer code, String msg, Object data) {
+	public Result(boolean flag, Integer code, String msg, Object data) {
 		super();
 		this.flag = flag;
 		this.code = code;

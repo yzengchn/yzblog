@@ -9,7 +9,7 @@ import java.util.List;
  * @Email yzengchn@163.com
  * @since  [产品/模块版本]
  */
-public class PageResultVO<T> {
+public class PageResult<T> {
 	/**
 	 * 总条数
 	 */
@@ -19,8 +19,13 @@ public class PageResultVO<T> {
 	 * 数据列表
 	 */
 	private List<T> rows;
+	
+	
+	
+	public PageResult() {
+	}
 
-	public PageResultVO(Long total, List<T> rows) {
+	public PageResult(Long total, List<T> rows) {
 		super();
 		this.total = total;
 		this.rows = rows;

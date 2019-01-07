@@ -1,27 +1,26 @@
-
 server:
-  port: 9001
+  port: 9002
   
 spring:
   application:
-    name: yzblog-base
-    
+    name: yzblog-article
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: ENC(vZSAzPqDeMa6QyAfOnjsGw==)
     password: ENC(RCwKx2oAxjqnnKYPajABZCYTl0wff5JA)
-    url: ENC(o8iVuU3Jp+Gnmdkr7zaBHbgruYTFo4NWfcQOXFAOUqUVlRTMeNSY+UOnR5De+uVOYQ8X5GxA9/HC/h/7UAoCkcgdcznOH9KgIPaO8hCzye6mIMg9Cmy1rg==)
+    url: ENC(Jc7ZQpEHpcwBZOTNIi+YMjgiDeQZyJUPOUdcPlhHG9kdzY9JtlXKTcCJvu629NvV8PrzAIT/lSsouH9cJP1yp/DQMmvuv/TP6YuYoaGzv3dS+y/7rib/6A==)
   jpa:
     hibernate:
       ddl-auto: update 
     show-sql: true
-    #generate-ddl: true
+    generate-ddl: true 
+  
 
 #是否激活 swagger true or false
 swagger:
   is:
     enable: true
-  scan-package: xyz.yzblog.base.controller
+  scan-package: xyz.yzblog.article.controller
 
 jasypt:
   encryptor:

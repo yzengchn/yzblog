@@ -2,7 +2,7 @@ package xyz.yzblog.common.utils;
 
 import xyz.yzblog.common.consts.StatusCode;
 import xyz.yzblog.common.enums.StatusCodeEnum;
-import xyz.yzblog.common.vo.ResultVO;
+import xyz.yzblog.common.vo.Result;
 
 public class ResultUtils {
 	
@@ -15,8 +15,8 @@ public class ResultUtils {
 	 * @param obj 返回数据
 	 * @return ResultVO
 	 */
-	public static ResultVO success(String msg,Object obj) {
-		ResultVO vo = new ResultVO();
+	public static Result success(String msg,Object obj) {
+		Result vo = new Result();
 		vo.setFlag(true);
 		vo.setCode(StatusCode.OK);
 		vo.setMsg(msg);
@@ -24,8 +24,8 @@ public class ResultUtils {
 		return vo;
 	}
 	
-	public static ResultVO success(StatusCodeEnum enum1,Object obj) {
-		ResultVO vo = new ResultVO();
+	public static Result success(StatusCodeEnum enum1,Object obj) {
+		Result vo = new Result();
 		vo.setFlag(true);
 		vo.setCode(enum1.getCode());
 		vo.setMsg(enum1.getMsg());
@@ -33,16 +33,16 @@ public class ResultUtils {
 		return vo;
 	}
 	
-	public static ResultVO success(StatusCodeEnum enum1) {
-		ResultVO vo = new ResultVO();
+	public static Result success(StatusCodeEnum enum1) {
+		Result vo = new Result();
 		vo.setFlag(true);
 		vo.setCode(enum1.getCode());
 		vo.setMsg(enum1.getMsg());
 		return vo;
 	}
 	
-	public static ResultVO fail(StatusCodeEnum enum1,Object obj) {
-		ResultVO vo = new ResultVO();
+	public static Result fail(StatusCodeEnum enum1,Object obj) {
+		Result vo = new Result();
 		vo.setFlag(false);
 		vo.setCode(enum1.getCode());
 		vo.setMsg(enum1.getMsg());

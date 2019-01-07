@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import xyz.yzblog.common.consts.StatusCode;
-import xyz.yzblog.common.vo.ResultVO;
+import xyz.yzblog.common.vo.Result;
 
 /**
  * 异常处理 
@@ -20,7 +20,7 @@ public class BaseExceptionHandler {
 	
 	@ExceptionHandler(value=Exception.class)
 	@ResponseBody
-	public ResultVO error(Exception e) {
-		return new ResultVO(false, StatusCode.ERROR, e.getMessage());
+	public Result error(Exception e) {
+		return new Result(false, StatusCode.ERROR, e.getMessage());
 	}
 }

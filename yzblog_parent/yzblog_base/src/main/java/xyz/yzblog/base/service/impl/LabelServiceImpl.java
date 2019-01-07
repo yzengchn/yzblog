@@ -10,6 +10,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -83,5 +85,12 @@ public class LabelServiceImpl implements LabelService{
 	public List<Label> findSearch(Map<String, String> searchMap) {
 		Specification<Label> specification = genSpecification(searchMap);
 		return labelRepository.findAll(specification);
+	}
+
+	@Override
+	public Page<Label> findSearch(Map<String, String> searchMap, int page, int size) {
+		Specification<Label> specification = genSpecification(searchMap);
+		PageRequest pageRequest = PageRequest.of(page-1, size);
+		return labelRepository.findAll(specification, pageRequest);
 	}
 }
