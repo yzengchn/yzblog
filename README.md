@@ -9,6 +9,8 @@
 |  yzblog_base   |  parent  | 基础服务 |
 | yzblog_article |  parent  | 文章服务 |
 |  yzblog_faqs   |  parent  | 问答服务 |
+| yzblog_search  |  parent  | 搜索服务 |
+|   yzblog_sms   |  parent  | 短信服务 |
 |                |          |          |
 
 

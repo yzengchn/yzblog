@@ -1,0 +1,22 @@
+
+server:
+  port: 9004
+  
+spring:
+  application:
+    name: yzblog-search
+    
+  data:
+    elasticsearch:
+      cluster-nodes: 
+
+#是否激活 swagger true or false
+swagger:
+  is:
+    enable: true
+  scan-package: xyz.yzblog.base.controller
+
+jasypt:
+  encryptor:
+    password: yzblog
+

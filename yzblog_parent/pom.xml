@@ -59,5 +59,7 @@
 		<module>yzblog_base</module>
 		<module>yzblog_article</module>
 		<module>yzblog_faqs</module>
+		<module>yzblog_search</module>
+		<module>yzblog_sms</module>
 	</modules>
 </project>
