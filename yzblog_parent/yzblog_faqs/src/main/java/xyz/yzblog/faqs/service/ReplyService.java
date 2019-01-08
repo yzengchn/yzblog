@@ -119,12 +119,12 @@ public class ReplyService {
                 	predicateList.add(cb.like(root.get("id").as(String.class), "%"+(String)searchMap.get("id")+"%"));
                 }
                 // 问题ID
-                if (searchMap.get("problem_id")!=null && !"".equals(searchMap.get("problem_id"))) {
-                	predicateList.add(cb.like(root.get("problem_id").as(String.class), "%"+(String)searchMap.get("problem_id")+"%"));
+                if (searchMap.get("problemId")!=null && !"".equals(searchMap.get("problemId"))) {
+                	predicateList.add(cb.like(root.get("problemId").as(String.class), "%"+(String)searchMap.get("problemId")+"%"));
                 }
                 // 回答人ID
-                if (searchMap.get("user_id")!=null && !"".equals(searchMap.get("user_id"))) {
-                	predicateList.add(cb.like(root.get("user_id").as(String.class), "%"+(String)searchMap.get("user_id")+"%"));
+                if (searchMap.get("userId")!=null && !"".equals(searchMap.get("userId"))) {
+                	predicateList.add(cb.like(root.get("userId").as(String.class), "%"+(String)searchMap.get("userId")+"%"));
                 }
                 // 回答人昵称
                 if (searchMap.get("nickname")!=null && !"".equals(searchMap.get("nickname"))) {

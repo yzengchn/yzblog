@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "tb_label")
+@Table(name = "label")
 public class Label {
 	@Id
 	private String id;//

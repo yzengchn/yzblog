@@ -1,6 +1,5 @@
-package xyz.yzblog.faqs.controller;
+package xyz.yzblog.article.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import xyz.yzblog.article.dataobject.Article;
+import xyz.yzblog.article.service.ArticleService;
 import xyz.yzblog.common.consts.StatusCode;
 import xyz.yzblog.common.enums.StatusCodeEnum;
 import xyz.yzblog.common.utils.ResultUtils;
 import xyz.yzblog.common.vo.PageResult;
 import xyz.yzblog.common.vo.Result;
-import xyz.yzblog.faqs.dataobject.Problem;
-import xyz.yzblog.faqs.service.ProblemService;
 
 /**
  * 控制器层
@@ -28,29 +27,40 @@ import xyz.yzblog.faqs.service.ProblemService;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/problem")
-public class ProblemController {
+@RequestMapping("/article")
+public class ArticleController {
 
 	@Autowired
-	private ProblemService problemService;
+	private ArticleService articleService;
 
 	/**
-	 * 根据标签ID查询不同种类的问题列表
+	 * 点赞
 	 * 
-	 * @param type 1:最新列表 2:热门列表 3:等待回复列表(即回复数为0)
-	 * @param labelid	标签ID
-	 * @param page      页码
-	 * @param size      页大小
+	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/list/{type}/{labelid}/{page}/{size}", method = RequestMethod.GET)
-	public Result findTypeListByLabelId(@PathVariable String type,@PathVariable String labelid, @PathVariable int page, @PathVariable int size) {
-		Page<Problem> pageList = problemService.findTypeProblemListByLabelId(type,labelid, page, size);
-		if(pageList == null) {
-			return ResultUtils.success(StatusCodeEnum.QUERY_OK);
+	@RequestMapping(value = "/thumbup/{id}", method = RequestMethod.PUT)
+	public Result updateThumbup(@PathVariable String id) {
+		int i = articleService.updateThumbup(id);
+		if(i > 0) {
+			return ResultUtils.success(StatusCodeEnum.THUMBUP_OK);
 		}
-		PageResult<Problem> pageResult = new PageResult<>(pageList.getTotalElements(), pageList.getContent());
-		return ResultUtils.success(StatusCodeEnum.QUERY_OK, pageResult);
+		return ResultUtils.success(StatusCodeEnum.ERROR);
+	}
+
+	/**
+	 * 审核
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/examine/{id}", method = RequestMethod.PUT)
+	public Result examine(@PathVariable String id) {
+		int i = articleService.examine(id);
+		if (i > 0) {
+			return ResultUtils.success(StatusCodeEnum.EXAMINE_OK);
+		}
+		return ResultUtils.success(StatusCodeEnum.ERROR);
 	}
 
 	/**
@@ -60,7 +70,7 @@ public class ProblemController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public Result findAll() {
-		return ResultUtils.success(StatusCodeEnum.QUERY_OK, problemService.findAll());
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, articleService.findAll());
 	}
 
 	/**
@@ -71,7 +81,7 @@ public class ProblemController {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Result findById(@PathVariable String id) {
-		return ResultUtils.success(StatusCodeEnum.QUERY_OK, problemService.findById(id));
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, articleService.findById(id));
 	}
 
 	/**
@@ -84,9 +94,9 @@ public class ProblemController {
 	 */
 	@RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap, @PathVariable int page, @PathVariable int size) {
-		Page<Problem> pageList = problemService.findSearch(searchMap, page, size);
+		Page<Article> pageList = articleService.findSearch(searchMap, page, size);
 		return ResultUtils.success(StatusCodeEnum.QUERY_OK,
-				new PageResult<Problem>(pageList.getTotalElements(), pageList.getContent()));
+				new PageResult<Article>(pageList.getTotalElements(), pageList.getContent()));
 	}
 
 	/**
@@ -97,29 +107,29 @@ public class ProblemController {
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap) {
-		return ResultUtils.success(StatusCodeEnum.QUERY_OK, problemService.findSearch(searchMap));
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, articleService.findSearch(searchMap));
 	}
 
 	/**
 	 * 增加
 	 * 
-	 * @param problem
+	 * @param article
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public Result add(@RequestBody Problem problem) {
-		problemService.add(problem);
+	public Result add(@RequestBody Article article) {
+		articleService.add(article);
 		return ResultUtils.success(StatusCodeEnum.ADD_OK);
 	}
 
 	/**
 	 * 修改
 	 * 
-	 * @param problem
+	 * @param article
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public Result update(@RequestBody Problem problem, @PathVariable String id) {
-		problem.setId(id);
-		problemService.update(problem);
+	public Result update(@RequestBody Article article, @PathVariable String id) {
+		article.setId(id);
+		articleService.update(article);
 		return ResultUtils.success(StatusCodeEnum.UPDATE_OK);
 	}
 
@@ -130,7 +140,7 @@ public class ProblemController {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Result delete(@PathVariable String id) {
-		problemService.deleteById(id);
+		articleService.deleteById(id);
 		return ResultUtils.success(StatusCodeEnum.DELETE_OK);
 	}
 

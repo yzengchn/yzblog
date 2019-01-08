@@ -13,9 +13,23 @@ spring:
     hibernate:
       ddl-auto: update 
     show-sql: true
-    generate-ddl: true 
-  
-
+    #generate-ddl: true 
+    
+  cache:
+    type: redis
+    
+  redis:
+    host: ENC(RWivxW0JRzbf97eKqhpK++dVSvMZFds2)
+    port: 8080
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 5000ms
+    
 #是否激活 swagger true or false
 swagger:
   is:

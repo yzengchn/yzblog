@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @since  [产品/模块版本]
  */
 @Entity
-@Table(name="tb_reply")
+@Table(name="reply")
 public class Reply implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

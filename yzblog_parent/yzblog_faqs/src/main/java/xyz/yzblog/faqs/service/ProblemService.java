@@ -36,18 +36,34 @@ public class ProblemService {
 	private IdWorker idWorker;
 
 	/**
-	 * 根据标签ID查询问题列表
+	 * 根据标签ID查询不同种类的问题列表
 	 * 
 	 * @param lableId 标签ID
 	 * @param page    页码
 	 * @param size    页大小
 	 * @return
 	 */
-	public Page<Problem> findNewProblemListByLabelId(String labelId, int page, int size){
+	public Page<Problem> findTypeProblemListByLabelId(String type, String labelId, int page, int size){
 		PageRequest pageRequest = PageRequest.of(page-1, size);
-		return problemDao.findNewProblemListByLabelId(labelId,pageRequest); 
+		Page<Problem> pageList = null;
+		//1:最新列表 2:热门列表 3:等待回复列表(即回复数为0)
+		switch (type) {
+		case "1":
+			pageList = problemDao.findNewProblemListByLabelId(labelId,pageRequest); 
+			break;
+		case "2":
+			pageList = problemDao.findHotProblemListByLabelId(labelId,pageRequest); 
+			break;
+		case "3":
+			pageList = problemDao.findWaitProblemListByLabelId(labelId,pageRequest); 
+			break;
+		default:
+			
+			break;
+		}
+		return pageList; 
 	}
-
+	
 	/**
 	 * 查询全部列表
 	 * 
