@@ -7,8 +7,8 @@
 		<artifactId>yzblog_parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>yzblog_sms</artifactId>
-	<name>短信服务</name>
+	<artifactId>yzblog_user</artifactId>
+	<name>用户服务</name>
 
 	<dependencies>
 		<dependency>
@@ -17,10 +17,9 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.qcloudsms</groupId>
-			<artifactId>qcloudsms</artifactId>
-			<version>1.0.6</version>
-		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>

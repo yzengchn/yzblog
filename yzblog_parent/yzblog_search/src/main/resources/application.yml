@@ -8,15 +8,12 @@ spring:
     
   data:
     elasticsearch:
-      cluster-nodes: 
+      cluster-nodes: ENC(VdgQyQ9iamzO2zeB9x3yiJ8PWuuPCxeqAdAm/TGP5CI=)
 
 #是否激活 swagger true or false
 swagger:
   is:
     enable: true
-  scan-package: xyz.yzblog.base.controller
+  scan-package: xyz.yzblog.search.controller
 
-jasypt:
-  encryptor:
-    password: yzblog
 

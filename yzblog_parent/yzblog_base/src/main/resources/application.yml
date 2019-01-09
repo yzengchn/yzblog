@@ -23,7 +23,4 @@ swagger:
     enable: true
   scan-package: xyz.yzblog.base.controller
 
-jasypt:
-  encryptor:
-    password: yzblog
 

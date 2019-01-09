@@ -1,0 +1,23 @@
+
+server:
+  port: 9004
+  
+spring:
+  application:
+    name: yzblog-sms
+    
+
+
+
+#是否激活 swagger true or false
+swagger:
+  is:
+    enable: true
+  scan-package: xyz.yzblog.sms.controller
+
+service:
+  appid: FGW1BATNiFJxgvnJ1Xl3VpE9X6hxMqSJ
+  appkey: Wtu1QCWJfatj+y/TIlBoBMUKsHuzcEJzU0kgvhZSFOkd8Y4EmAwEp3TInjbsuykw
+  templateid: s60i5lcCiOMZMTBr1PZwRQ==
+
+

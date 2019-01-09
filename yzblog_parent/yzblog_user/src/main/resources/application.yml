@@ -1,10 +1,10 @@
 
 server:
-  port: 9003
+  port: 9005
   
 spring:
   application:
-    name: yzblog-FAQ
+    name: yzblog-user
     
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -21,6 +21,7 @@ spring:
 swagger:
   is:
     enable: true
-  scan-package: xyz.yzblog.base.controller
+  scan-package: xyz.yzblog.user.controller
+
 
 

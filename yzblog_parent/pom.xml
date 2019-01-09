@@ -61,5 +61,6 @@
 		<module>yzblog_faqs</module>
 		<module>yzblog_search</module>
 		<module>yzblog_sms</module>
+		<module>yzblog_user</module>
 	</modules>
 </project>
