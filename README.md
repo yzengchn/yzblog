@@ -5,13 +5,15 @@
 |     服务名     | 父级依赖 | 模块说明 |
 | :------------: | :------: | :------: |
 | yzblog_parent  |    无    |  父工程  |
+| yzblog_eureka  |  parent  | 注册中心 |
+| yzblog_config  |  parent  | 配置管理 |
 | yzblog_common  |  parent  |  通用包  |
 |  yzblog_base   |  parent  | 基础服务 |
 | yzblog_article |  parent  | 文章服务 |
 |  yzblog_faqs   |  parent  | 问答服务 |
 | yzblog_search  |  parent  | 搜索服务 |
 |   yzblog_sms   |  parent  | 短信服务 |
-|                |          |          |
+|  yzblog_user   |  parent  | 用户服务 |
 
 
 

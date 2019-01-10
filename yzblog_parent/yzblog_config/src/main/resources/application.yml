@@ -1,0 +1,29 @@
+server:
+  port: 9999
+  
+spring:
+  application:
+    name: yzblog-config
+    
+  cloud:
+    config:
+      server:
+        git:
+          uri: ENC(QSrZqRC7ui2INhu3EggFtfUTb3UDnhh+HLD78cQpmrBbWp6iihm6SS/MZK8OkFNCPck6hWuKSmDdfd39+SrjMg==)
+          
+  rabbitmq:
+    virtual-host: myrabbitmq
+    host: ENC(PIS+LF8DRIas7LYrkxl/siDRkVA1lYpX)
+    port: 5672
+    username: ENC(VQW3MeUhcudI4+b/aREDRQ==)
+    password: ENC(N4acvJ3W+OseCWZEfUnBbOwIcayrXZVp) 
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - bus-refresh
+jasypt:
+  encryptor:
+    password: yzblog    

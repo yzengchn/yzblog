@@ -6,7 +6,18 @@ spring:
   application:
     name: yzblog-sms
     
-
+  redis:
+    host: ENC(RWivxW0JRzbf97eKqhpK++dVSvMZFds2)
+    port: 8080
+    password:
+    timeout: 5000ms
+    
+  rabbitmq:
+    virtual-host: myrabbitmq
+    host: ENC(PIS+LF8DRIas7LYrkxl/siDRkVA1lYpX)
+    port: 5672
+    username: ENC(VQW3MeUhcudI4+b/aREDRQ==)
+    password: ENC(N4acvJ3W+OseCWZEfUnBbOwIcayrXZVp)
 
 
 #是否激活 swagger true or false

@@ -5,12 +5,6 @@
     <artifactId>yzblog_parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>yzblog_common</artifactId>
-  <name>公共包</name>
-  
-  <dependencies>
-  	
-  </dependencies>
-  
-  
+  <artifactId>yzblog_eureka</artifactId>
+  <name>eureka_server</name>
 </project>

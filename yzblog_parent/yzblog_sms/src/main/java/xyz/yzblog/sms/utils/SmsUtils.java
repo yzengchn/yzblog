@@ -4,26 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
 
+import xyz.yzblog.sms.consts.SMSConstants;
+
 @Component
 public class SmsUtils {
 	//国家码
 	private static final String NATION_CODE = "86";  
 	
-	@Value("${service.templateid}")
+	/*@Value("${service.templateid}")
 	private String TEMPLATE_ID;  
 	
 	@Value("${service.appid}")
 	public String APPID; 
 
 	@Value("${service.appkey}")
-	public String APPKEY;
+	public String APPKEY;*/
 	
 	/**
 	 * 发送短信验证码
@@ -41,8 +42,8 @@ public class SmsUtils {
 			ArrayList<String> params = new ArrayList<String>();
 			params.add(VerifyCode);
 			params.add(validity);
-		    SmsSingleSender ssender = new SmsSingleSender(Integer.parseInt(APPID), APPKEY);
-		    SmsSingleSenderResult result = ssender.sendWithParam(NATION_CODE, phoneNumber, Integer.parseInt(TEMPLATE_ID), params, sign, "", "");
+		    SmsSingleSender ssender = new SmsSingleSender(Integer.parseInt(SMSConstants.APPID), SMSConstants.APPSECRET);
+		    SmsSingleSenderResult result = ssender.sendWithParam(NATION_CODE, phoneNumber, Integer.parseInt(SMSConstants.TEMPLATEID), params, sign, "", "");
 		    System.out.println(result);
 		    return result;
 		} catch (HTTPException e) {
