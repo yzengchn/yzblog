@@ -1,0 +1,28 @@
+
+server:
+  port: 9006
+  
+spring:
+  application:
+    name: yzblog-crawler
+    
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: ENC(vZSAzPqDeMa6QyAfOnjsGw==)
+    password: ENC(RCwKx2oAxjqnnKYPajABZCYTl0wff5JA)
+    url: ENC(Jc7ZQpEHpcwBZOTNIi+YMjgiDeQZyJUPOUdcPlhHG9kdzY9JtlXKTcCJvu629NvV8PrzAIT/lSsouH9cJP1yp/DQMmvuv/TP6YuYoaGzv3dS+y/7rib/6A==)
+  jpa:
+    hibernate:
+      ddl-auto: update 
+    show-sql: true
+    #generate-ddl: true
+    
+  redis:
+   host: ENC(RWivxW0JRzbf97eKqhpK++dVSvMZFds2)
+   port: 8080
+   password:
+   timeout: 5000ms
+
+
+
+

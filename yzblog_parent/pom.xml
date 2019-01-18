@@ -80,5 +80,6 @@
 		<module>yzblog_user</module>
 		<module>yzblog_eureka</module>
 		<module>yzblog_config</module>
+		<module>yzblog_article_crawler</module>
 	</modules>
 </project>
