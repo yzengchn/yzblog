@@ -41,6 +41,14 @@ public class ResultUtils {
 		return vo;
 	}
 	
+	public static Result error(StatusCodeEnum enum1) {
+		Result vo = new Result();
+		vo.setFlag(true);
+		vo.setCode(enum1.getCode());
+		vo.setMsg(enum1.getMsg());
+		return vo;
+	}
+	
 	public static Result fail(StatusCodeEnum enum1,Object obj) {
 		Result vo = new Result();
 		vo.setFlag(false);

@@ -2,7 +2,9 @@ package xyz.yzblog.article.crawler.processor;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
+import xyz.yzblog.article.crawler.TestCrawler;
 
 public class ArticleProcessor implements PageProcessor {
 
@@ -28,7 +30,11 @@ public class ArticleProcessor implements PageProcessor {
 	@Override
 	public Site getSite() {
 		// TODO Auto-generated method stub
-		return null;
+		return Site.me().setSleepTime(100).setRetryTimes(3);
+	}
+	
+	public static void main(String[] args) {
+		Spider.create(new ArticleProcessor()).addUrl("https://blog.csdn.net/nav/ai").run();
 	}
 
 }

@@ -10,6 +10,48 @@ package xyz.yzblog.common.enums;
  */
 public enum StatusCodeEnum {
 	/**
+	 * code: 1000
+	 * msg: 登录成功
+	 */
+	LOGIN_SUCCESS(1000, "登录成功！"),
+	/**
+	 * code: 1001
+	 * msg: 注册失败
+	 */
+	REGISTER_FAIL(1001, "注册失败，请重试！"),
+	
+	/**
+	 * code: 1021
+	 * msg: 用户名或密码错误
+	 */
+	USER_PASSWORD_ERROR(1021,"用户名或密码错误！"),
+	
+	/**
+	 * code: 1022
+	 * msg: 两次密码输入不一致
+	 */
+	PASSWORD_INCONSISTENT(1022,"两次密码输入不一致！"),
+	
+	/**
+	 * code: 1023
+	 * msg: 原密码输入错误
+	 */
+	OLD_PASSWORD_ERROR(1023,"原密码输入错误！"),
+	
+	/**
+	 * code: 1091
+	 * msg: 用户不存在
+	 */
+	USER_NOT_EXIST(1091,"用户不存在！"),
+	
+	/**
+	 * code: 1099
+	 * msg: 保存用户失败
+	 */
+	USER_SAVE_FAIL(1099,"保存用户失败！"),
+	
+	
+	/**
 	 * 20000,"查询成功"
 	 */
 	QUERY_OK(20000,"查询成功"),
