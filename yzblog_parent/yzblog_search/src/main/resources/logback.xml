@@ -6,7 +6,7 @@
     <!-- pro文件路径 -->
     <property name="FILE_PATH" value="/yzbloglog/search"/>
     <appender name="PROD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${FILE_PATH}/articl.log</File>
+        <File>${FILE_PATH}/search.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>${FILE_PATH}/search.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>

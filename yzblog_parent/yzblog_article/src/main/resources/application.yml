@@ -2,6 +2,8 @@ server:
   port: 9002
   
 spring:
+  profiles:
+    active: @spring.profiles.active@
   application:
     name: yzblog-article
   datasource:
@@ -17,6 +19,9 @@ spring:
     
   cache:
     type: redis
+    cache-names: systemCache
+  session:
+    store-type: redis
     
   redis:
     host: ENC(RWivxW0JRzbf97eKqhpK++dVSvMZFds2)
@@ -35,6 +40,8 @@ swagger:
   is:
     enable: true
   scan-package: xyz.yzblog.article.controller
+
+
 
 jasypt:
   encryptor:
