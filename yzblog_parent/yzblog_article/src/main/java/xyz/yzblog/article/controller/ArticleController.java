@@ -1,6 +1,9 @@
 package xyz.yzblog.article.controller;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -144,4 +147,14 @@ public class ArticleController {
 		return ResultUtils.success(StatusCodeEnum.DELETE_OK);
 	}
 
+	
+	@RequestMapping(value="/session",method=RequestMethod.GET)
+	public Result session(HttpServletRequest request) {
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("sessionId", request.getSession().getId());
+		map.put("map", request.getSession().getAttribute("map").toString());
+		
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, map);
+	} 
 }

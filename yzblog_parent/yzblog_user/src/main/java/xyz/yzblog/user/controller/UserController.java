@@ -1,8 +1,12 @@
 package xyz.yzblog.user.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,12 +49,28 @@ public class UserController {
 	} 
 	
 	@RequestMapping(value="/get",method=RequestMethod.GET)
-	public void get() {
+	public Result get(HttpServletRequest request) {
 		String token = jwtUtils.createJwt("1546421", "tom", "admin");
 		System.out.println(token);
 		Claims claims = jwtUtils.parseJwt(token);
 		
+		Map<String, String> map = new HashMap<>();
+		map.put("url", request.getRequestURL().toString());
+		map.put("name", claims.getSubject());
+		request.getSession().setAttribute("map", map);
+		
 		System.out.println(claims.getSubject());
 		System.out.println(claims.get("roles"));
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK);
+	} 
+	
+	@RequestMapping(value="/session",method=RequestMethod.GET)
+	public Result session(HttpServletRequest request) {
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("sessionId", request.getSession().getId());
+		map.put("map", request.getSession().getAttribute("map").toString());
+		
+		return ResultUtils.success(StatusCodeEnum.QUERY_OK, map);
 	} 
 }

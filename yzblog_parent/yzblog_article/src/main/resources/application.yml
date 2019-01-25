@@ -36,3 +36,8 @@ swagger:
     enable: true
   scan-package: xyz.yzblog.article.controller
 
+jasypt:
+  encryptor:
+    password: yzblog
+    
+
