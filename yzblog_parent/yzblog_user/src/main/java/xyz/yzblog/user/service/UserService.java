@@ -1,21 +1,18 @@
 package xyz.yzblog.user.service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import xyz.yzblog.common.enums.StatusCodeEnum;
+import xyz.yzblog.common.utils.IdWorker;
 import xyz.yzblog.common.utils.ResultUtils;
 import xyz.yzblog.common.vo.Result;
-import xyz.yzblog.user.controller.BaseExceptionHandler;
 import xyz.yzblog.user.dao.UserDao;
 import xyz.yzblog.user.dataobject.User;
 import xyz.yzblog.user.utils.JwtUtils;
@@ -35,8 +32,14 @@ public class UserService {
 	@Autowired
 	private JwtUtils jwtUtils;
 	
-	public Map<String,String> register(){
-		return null;
+	@Autowired
+	private IdWorker idWorker;
+	
+	public boolean register(User user){
+		user.setId(idWorker.nextId()+"");
+		user.setRegdate(new Date());
+		User save = userDao.save(user);
+		return save != null ? true : false;
 	}
 	
 	public Result login(Map<String,String> paramMap){

@@ -16,9 +16,14 @@ public enum StatusCodeEnum {
 	LOGIN_SUCCESS(1000, "登录成功！"),
 	/**
 	 * code: 1001
+	 * msg: 注册成功
+	 */
+	REGISTER_SUCCESS(1001, "注册成功！"),
+	/**
+	 * code: 1081
 	 * msg: 注册失败
 	 */
-	REGISTER_FAIL(1001, "注册失败，请重试！"),
+	REGISTER_FAIL(1023, "注册失败，请重试！"),
 	
 	/**
 	 * code: 1021

@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Claims;
+import xyz.yzblog.common.consts.StatusCode;
 import xyz.yzblog.common.enums.StatusCodeEnum;
 import xyz.yzblog.common.utils.ResultUtils;
 import xyz.yzblog.common.vo.Result;
+import xyz.yzblog.user.dataobject.User;
+import xyz.yzblog.user.form.UserForm;
 import xyz.yzblog.user.service.UserService;
 import xyz.yzblog.user.utils.JwtUtils;
 
@@ -46,6 +52,29 @@ public class UserController {
 			return ResultUtils.error(StatusCodeEnum.ERROR);
 		}
 		return userService.login(paramMap);
+	} 
+	
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public Result register(@Valid UserForm form, BindingResult bindingResult) {
+		try {
+			if(bindingResult.hasErrors()) {
+				return new Result(true, StatusCode.ERROR, bindingResult.getFieldError().getDefaultMessage());
+			}
+			
+			User user = new User();
+			BeanUtils.copyProperties(form, user);
+			
+			if(userService.register(user)) {
+				return ResultUtils.success(StatusCodeEnum.REGISTER_SUCCESS, user);
+			}else {
+				return null;
+			}
+		} catch (Exception e) {
+			
+		}finally {
+			
+		}
+		return null;
 	} 
 	
 	@RequestMapping(value="/get",method=RequestMethod.GET)
