@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>xyz.yzblog</groupId>
 		<artifactId>yzblog_parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>yzblog_eureka</artifactId>
 	<name>eureka_server</name>
@@ -31,7 +31,7 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.13</version>
 				<configuration>
-					<imageName>123.207.236.49:5000/${project.artifactId}:${project.version}</imageName>
+					<imageName>${project.artifactId}:${project.version}</imageName>
 					<baseImage>jdk1.8</baseImage>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 					<resources>
