@@ -5,9 +5,10 @@
 	<parent>
 		<groupId>xyz.yzblog</groupId>
 		<artifactId>yzblog_parent</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>yzblog_eureka</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>eureka_server</name>
 
 	<dependencies>
