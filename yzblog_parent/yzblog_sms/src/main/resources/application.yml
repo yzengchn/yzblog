@@ -31,4 +31,6 @@ service:
   appkey: Wtu1QCWJfatj+y/TIlBoBMUKsHuzcEJzU0kgvhZSFOkd8Y4EmAwEp3TInjbsuykw
   templateid: s60i5lcCiOMZMTBr1PZwRQ==
 
-
+jasypt:
+  encryptor:
+    password: yzblog

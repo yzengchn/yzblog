@@ -8,6 +8,3 @@ feign:
   hystrix:
     enabled: true
    
-jasypt:
-  encryptor:
-    password: yzblog
